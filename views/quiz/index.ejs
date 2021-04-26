@@ -1,0 +1,44 @@
+<%- include("../partials/header") %>
+<div class="container">
+	<header class="jumbotron">
+		<div class="container" style="text-align: center;">
+			<h1>
+			All Quizzes!
+			</h1>
+		</div>
+	</header>
+	<div class="row text-center" style="display:flex; flex-wrap:wrap;">
+		<% quiz.forEach(function(q){ %>
+		<div class="col-md-4 col-sm-6">
+			<div class="thumbnail border border-dark p-1" style="background-color: white;">
+				<div class="caption">
+					<h4>
+						Subject:<%= q.Q_Subject %>
+					</h4>
+                </div>
+                <div class="caption">
+					<h4>
+						Time:<%= q.Q_Time %>
+					</h4>
+                </div>
+                <div class="caption">
+					<h4>
+						Date:<%= q.Q_Date %>
+					</h4>
+                </div>
+                <div class="caption">
+					<h4>
+						Duration:<%= q.Q_Duration %>
+					</h4>
+				</div>
+			<button type="button" class="btn btn-success mr-2">Edit</button>
+			<button type="button" class="btn btn-danger ml-2">Delete</button>
+			</div>
+
+		</div>
+	<% }) %>
+	</div>
+	
+</div>
+
+<%- include("../partials/footer") %>

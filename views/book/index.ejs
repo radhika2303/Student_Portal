@@ -1,0 +1,38 @@
+<%- include("../partials/header") %>
+<div class="container">
+	<header class="jumbotron">
+		<div class="container" style="text-align:center">
+			<h1>
+			All Books!
+			</h1>
+		</div>
+	</header>
+	<div class="row text-center" style="display:flex; flex-wrap:wrap;">
+		<% Books.forEach(function(Book){ %>
+		<div class="col-md-3 col-sm-6 border border-dark p-4" style="background-color: white;">
+			<div class="thumbnail">
+				<div class="caption">
+					<h4>
+						Name: <%= Book.B_Name %>
+					</h4>
+                </div>
+                <div class="caption">
+					<h4>
+						Author: <%= Book.B_Author %>
+					</h4>
+                </div>
+                <div class="caption">
+					<h4>
+						Subject: <%= Book.B_Subject%>
+					</h4>
+				</div>
+				<button type="button" class="btn btn-success mr-2">Edit</button>
+				<button type="button" class="btn btn-danger ml-2">Delete</button>
+			</div>
+		</div>
+	<% }) %>
+	</div>
+	
+</div>
+
+<%- include("../partials/footer") %>

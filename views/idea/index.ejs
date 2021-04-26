@@ -1,0 +1,38 @@
+<%- include("../partials/header") %>
+<div class="container">
+	<header class="jumbotron">
+		<div class="container" style="text-align: center;">
+			<h1>
+			All Ideas!
+			</h1>
+		</div>
+	</header>
+	<div class="row text-center" style="display:flex; flex-wrap:wrap;">
+		<% Ideas.forEach(function(Idea){ %>
+		<div class="col-md-3 col-sm-6">
+			<div class="thumbnail border border-dark p-4" style="background-color: white;">
+				<div class="caption">
+					<h4>
+						Topic:<%= Idea.Topic %>
+					</h4>
+                </div>
+                <div class="caption">
+					<h4>
+						No of People:<%= Idea.N_People %>
+					</h4>
+                </div>
+                <div class="caption">
+					<h4>
+						Prerequisites:<%= Idea.Pre_req %>
+					</h4>
+				</div>
+				<button type="button" class="btn btn-success mr-2">Edit</button>
+				<button type="button" class="btn btn-danger ml-2">Delete</button>
+			</div>
+		</div>
+	<% }) %>
+	</div>
+	
+</div>
+
+<%- include("../partials/footer") %>

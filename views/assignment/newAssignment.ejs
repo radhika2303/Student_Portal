@@ -1,0 +1,31 @@
+<%- include("../partials/header.ejs") %>
+<div class="container d-flex justify-content-center align-items-center mt-5">
+	<div class="row">
+		<div class="col-md-6 offest-md-3 col-xl-4 offset-xl-4">
+			<h1 style="text-align:center;">
+				Add New Assignment
+			</h1>
+			<div class="card shadow p-2">
+			<form action="/student/assignment/new" method="POST">
+				<div class="mb-3">
+					<label class="form-label" for="A_Subject">Subject</label>
+					<input class="form-control" type="text" name="A_Subject" placeholder="Subject for Assignment..">
+				</div>
+				<div class="mb-3">
+					<label class="form-label" for="A_Time">Time of Submission</label>
+					<input class="form-control" type="time" name="A_Time" placeholder="Time for Submission..">
+                </div>	
+                <div class="mb-3">
+					<label class="form-label" for="A_Date">Date of Submission</label>
+					<input class="form-control" type="date" name="A_Date" placeholder="Date of Submission..">
+				</div>
+				<br>
+				<div class="form-group">
+					<button class="btn btn-lg btn-primary btn-block">Submit!</button>
+				</div>
+			</form>
+		</div>		
+	</div>
+</div>
+</div>
+<%- include("../partials/footer.ejs") %>

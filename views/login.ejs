@@ -1,0 +1,28 @@
+<%- include("./partials/header.ejs") %>
+<div class="container d-flex justify-content-center align-items-center mt-5">
+	<div class="row">
+		<div class="col-md-6 offest-md-3 col-xl-4 offset-xl-4">
+			<h1 style="text-align:center;">
+				LogIn
+			</h1>
+			<div class="card shadow p-2">
+				<form action="/login" method="POST">
+					<div class="mb-3">
+						<label class="form-label" for="username">MIS</label>
+						<input class="form-control" type="text" id="username" name="username" placeholder="MIS">
+					</div>
+					<div class="mb-3">
+						<label class="form-label" for="password">Password</label>
+						<input class="form-control" type="password" name="password" placeholder="Password">
+					</div>	
+					<br>
+					<div class="mb-3">
+						<button class="btn btn-lg btn-success btn-block">Login!</button>
+					</div>
+				</form>
+				<div class="mb-3"><a href="/register">New User?</a></div>
+			</div>
+		</div>		
+	</div>
+</div>
+<%- include("./partials/footer.ejs") %>

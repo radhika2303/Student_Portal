@@ -1,0 +1,30 @@
+<%- include("../partials/header.ejs") %>
+<div class="container d-flex justify-content-center align-items-center mt-2">
+	<div class="row">
+		<div class="col-md-10 offest-md-3 col-xl-8 offset-xl-2">
+			<h1 style="text-align:center;">
+				Add Blog
+			</h1>
+			<div class="card shadow p-2" style="width:100%">
+			<form action="/student/blog/new" method="POST">
+				<div class="mb-3">
+					<label class="form-label" for="Topic">Title</label>
+					<input class="form-control" type="text" name="Topic" placeholder="Title for Blog...">
+				</div>
+				<div class="mb-3">
+					<label class="form-label" for="Content">Content</label>
+					<textarea class="form-control" rows ="10" cols="90" type="text" name="Content" placeholder="Content For Blog... "></textarea>
+                </div>	
+                <div class="mb-3">
+					<label class="form-label" for="B_Date">Date of Publishing</label>
+					<input class="form-control" type="date" name="B_Date">
+				</div>	
+				<div class="form-group">
+					<button class="btn btn-lg btn-primary btn-block">Submit!</button>
+				</div>
+			</form>
+		</div>		
+	</div>
+</div>
+</div>
+<%- include("../partials/footer.ejs") %>

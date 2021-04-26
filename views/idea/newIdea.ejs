@@ -1,0 +1,29 @@
+<%- include("../partials/header.ejs") %>
+<div class="container d-flex justify-content-center align-items-center mt-5">
+	<div class="row">
+		<div class="col-md-6 offest-md-3 col-xl-4 offset-xl-4">
+			<h1 style="text-align:center;">
+				Add Idea
+			</h1>
+			<div class="card shadow p-2">
+            <form action="/student/idea/new" method="POST">
+				<div class="mb-3">
+					<label class="form-label" for="Topic">Idea</label>
+					<input class="form-control" type="text" name="Topic" placeholder="Idea...">
+				</div>
+				<div class="mb-3">
+					<label class="form-label" for="Pre_req">Prerequisites for Interested People</label>
+					<input class="form-control" type="text" name="Pre_req" placeholder="Pre Requisites... ">
+                </div>	
+                <div class="mb-3">
+					<label class="form-label" for="N_People">Number of People Required</label>
+					<input class="form-control" type="number" name="N_People" placeholder="Number of People...">
+				</div>
+					<button class="btn btn-lg btn-primary btn-block">Submit!</button>
+				</div>
+			</form>
+		</div>		
+	</div>
+</div>
+</div>
+<%- include("../partials/footer.ejs") %>
