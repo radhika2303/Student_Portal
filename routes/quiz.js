@@ -2,6 +2,8 @@ const express = require("express");
 const User = require("../models/user");
 const Quiz = require("../models/quiz");
 const Router = express.Router();
+var nodemailer = require('nodemailer');
+
 
 Router.get("/", (req,res) => {
     res.render("quiz/quiz.ejs")
@@ -27,6 +29,30 @@ Router.post("/new", (req,res) => {
             req.user.save();
         }
     })
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'muskanparyani007@gmail.com',
+          pass: 'deepakbaba'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'muskanparyani007@gmail.com',
+        to: 'muskanparyani007@gmail.com',
+        subject: 'Quiz Published',
+        text: 'Your Upcoming Quiz is recorded on Student Portal'
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+
     res.redirect("/student/quiz/all")
 })
 
@@ -39,6 +65,32 @@ Router.get("/all", (req,res) => {
 			res.render("quiz/index.ejs", {quiz: allquizzes});
 		}
 	});
+})
+
+Router.get("/:id/edit", async (req,res) => {
+    const { id } = req.params;
+    const quiz = await Quiz.findById(id);
+    res.render("quiz/edit.ejs", { quiz });
+})
+
+Router.put("/:id", async (req,res)=> {
+    const { id } = req.params;
+    const quiz = await  Quiz.findByIdAndUpdate(id, req.body, { runValidators: true, new: true })
+    console.log(req.body)
+    res.redirect("/student/quiz/all")
+})
+
+
+Router.get("/:id/delete", async(req,res) => {
+    const { id } = req.params;
+    const quiz = await Quiz.findById(id);
+    res.render("quiz/delete.ejs", { quiz });
+})
+
+Router.delete("/:id", async (req,res)=> {
+    const { id } = req.params;
+    const quiz = await Quiz.findByIdAndDelete(id);
+    res.redirect("/student/quiz/all")
 })
 
 module.exports = Router;

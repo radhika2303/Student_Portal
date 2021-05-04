@@ -1,0 +1,10 @@
+<%- include("../partials/header.ejs") %>
+<h2 style="text-align: center; margin: auto auto; margin-bottom: 0px;">Are You sure?</h2>
+
+<form action="/student/assignment/<%= assignment._id %>?_method=DELETE" method="POST">
+    <div class="form-group" style="text-align:center;">
+        <button class="btn btn-lg btn-danger">Yes</button>
+        <button class="btn btn-lg btn-success">No</button>
+    </div>
+</form>
+<%- include("../partials/footer.ejs") %>

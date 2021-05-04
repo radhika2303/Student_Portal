@@ -26,8 +26,16 @@
 						Date:<%= Blog.B_Date %>
 					</h4>
 				</div>
-				<button type="button" class="btn btn-success mr-2">Edit</button>
-				<button type="button" class="btn btn-danger ml-2">Delete</button>
+				<button type="button" id = "myEdit" class="btn btn-success mr-2">Edit</button>
+				<button type="button"id="myDelete"  class="btn btn-danger ml-2">Delete</button>
+				<script type="text/javascript">
+					document.getElementById("myEdit").onclick = function () {
+						location.href = "/student/blog/<%= Blog._id %>/edit";
+					};
+					document.getElementById("myDelete").onclick = function () {
+						location.href = "/student/blog/<%= Blog._id %>/delete";
+					};
+				</script>
 			</div>
 		</div>
 	<% }) %>

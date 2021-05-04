@@ -11,7 +11,9 @@ var AssignmentRoutes = require("./routes/assignment")
 var BlogRoutes = require("./routes/blog")
 var BookRoutes = require("./routes/book")
 var QuizRoutes = require("./routes/quiz")
+const methodOverride = require("method-override")
 
+app.use(methodOverride('_method'))
 
 //APP CONFIG
 app.use(require("express-session")({
@@ -96,6 +98,7 @@ app.get("/logout",function(req,res) {
 	req.logout();
 	res.redirect("/");
 })
+
 
 function isLoggedIn(req,res,next){
 	if(req.isAuthenticated()) {

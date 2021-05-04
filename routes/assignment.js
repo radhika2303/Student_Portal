@@ -2,6 +2,8 @@ const express = require("express");
 const User = require("../models/user");
 const assignment = require("../models/assignment");
 const Router = express.Router();
+var nodemailer = require('nodemailer');
+
 
 Router.get("/", (req,res) => {
     res.render("assignment/assignment.ejs")
@@ -26,6 +28,30 @@ Router.post("/new", (req,res) => {
             req.user.save();
         }
     })
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'muskanparyani007@gmail.com',
+          pass: 'deepakbaba'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'muskanparyani007@gmail.com',
+        to: 'muskanparyani007@gmail.com',
+        subject: 'Assignment Published',
+        text: 'Your Upcoming Assignment is recorded on Student Portal'
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+
     res.redirect("/student/assignment/all")
 })
 
@@ -38,6 +64,31 @@ Router.get("/all", (req,res) => {
 			res.render("assignment/index.ejs", {assignments: allassignments});
 		}
 	});
+})
+
+Router.get("/:id/edit", async (req,res) => {
+    const { id } = req.params;
+    const assignments = await assignment.findById(id);
+    res.render("assignment/edit.ejs", { assignment: assignments });
+})
+
+Router.put("/:id", async (req,res)=> {
+    const { id } = req.params;
+    const assgn = await  assignment.findByIdAndUpdate(id, req.body, { runValidators: true, new: true })
+    console.log(req.body)
+    res.redirect("/student/assignment/all")
+})
+
+Router.get("/:id/delete", async(req,res) => {
+    const { id } = req.params;
+    const assignments = await assignment.findById(id);
+    res.render("assignment/delete.ejs", { assignment: assignments });
+})
+
+Router.delete("/:id", async (req,res)=> {
+    const { id } = req.params;
+    const assignments = await assignment.findByIdAndDelete(id);
+    res.redirect("/student/assignment/all")
 })
 
 module.exports = Router;

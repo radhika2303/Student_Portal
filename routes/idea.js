@@ -2,7 +2,11 @@ const express = require("express");
 const User = require("../models/user");
 const Idea = require("../models/idea");
 const Router = express.Router();
+const methodOverride = require("method-override")
+var nodemailer = require('nodemailer');
 
+
+Router.use(methodOverride('_method'))
 
 Router.get("/new", (req,res) => {
     res.render("idea/newIdea.ejs");
@@ -23,6 +27,29 @@ Router.post("/new", (req,res) => {
             req.user.save();
         }
     })
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'muskanparyani007@gmail.com',
+          pass: 'deepakbaba'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'muskanparyani007@gmail.com',
+        to: 'muskanparyani007@gmail.com',
+        subject: 'Idea Published',
+        text: 'Your Idea was Published on Student Portal'
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
     res.redirect("/student/idea/all")
 })
 
@@ -35,6 +62,31 @@ Router.get("/all", (req,res) => {
 			res.render("idea/index.ejs", {Ideas: allIdeas});
 		}
 	});
+})
+
+Router.get("/:id/edit", async (req,res) => {
+    const { id } = req.params;
+    const idea = await Idea.findById(id);
+    res.render("idea/edit.ejs", { idea });
+})
+
+Router.put("/:id", async (req,res)=> {
+    const { id } = req.params;
+    const idea = await  Idea.findByIdAndUpdate(id, req.body, { runValidators: true, new: true })
+    console.log(req.body)
+    res.redirect("/student/idea/all")
+})
+
+Router.get("/:id/delete", async(req,res) => {
+    const { id } = req.params;
+    const idea = await Idea.findById(id);
+    res.render("idea/delete.ejs", { idea });
+})
+
+Router.delete("/:id", async (req,res)=> {
+    const { id } = req.params;
+    const idea = await Idea.findByIdAndDelete(id);
+    res.redirect("/student/idea/all")
 })
 
 module.exports = Router;
