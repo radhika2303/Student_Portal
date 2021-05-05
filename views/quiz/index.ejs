@@ -1,38 +1,44 @@
 <%- include("../partials/header") %>
-<div class="container">
-	<header class="jumbotron">
-		<div class="container" style="text-align: center; color: white;">
-			<h1>
-			All Quizzes!
-			</h1>
-		</div>
-	</header>
-	<div class="row text-center" style="display:flex; flex-wrap:wrap;">
-		<% quiz.forEach(function(q){ %>
-		<div class="col-md-4 col-sm-6">
-			<div class="thumbnail border border-dark p-1" style="background-color: white;">
-				<div class="caption">
-					<h4>
-						Subject:<%= q.Q_Subject %>
-					</h4>
-                </div>
-                <div class="caption">
-					<h4>
-						Time:<%= q.Q_Time %>
-					</h4>
-                </div>
-                <div class="caption">
-					<h4>
-						Date:<%= q.Q_Date %>
-					</h4>
-                </div>
-                <div class="caption">
-					<h4>
-						Duration:<%= q.Q_Duration %>
-					</h4>
+	<div class="container">
+		<header class="jumbotron">
+			<div class="container" style="text-align: center; color: white;">
+				<h1>
+					All Quizzes!
+				</h1>
+			</div>
+		</header>
+		<div class="row text-center" style="display:flex; flex-wrap:wrap;">
+			<% quiz.forEach(function(q){ %>
+				<div class="col-md-4 col-sm-6">
+					<div class="thumbnail border border-dark p-1" style="background-color: white;">
+						<div class="caption">
+							<h4>
+								Subject:<%= q.Q_Subject %>
+							</h4>
+						</div>
+						<div class="caption">
+							<h4>
+								Time:<%= q.Q_Time %>
+							</h4>
+						</div>
+						<div class="caption">
+							<h4>
+								<% months=["January", "February" , "March" , "April" , "May" , "June" , "July"
+									, "August" , "September" , "October" , "November" , "December" ] %>
+									Date:<%= q.Q_Date.getDate()%>
+										<%= months[q.Q_Date.getMonth()]%>
+											<%= q.Q_Date.getFullYear()%>
+							</h4>
+						</div>
+						<div class="caption">
+							<h4>
+								Duration:<%= q.Q_Duration %>
+							</h4>
+						</div>
+						<button type="button" id="myEdit" class="btn btn-success mr-2">Edit</button>
+						<button type="button" id="myDelete" class="btn btn-danger ml-2">Delete</button>
+					</div>
 				</div>
-				<button type="button" id="myEdit" class="btn btn-success mr-2">Edit</button>
-				<button type="button" id="myDelete" class="btn btn-danger ml-2">Delete</button>
 				<script>
 					document.getElementById("myEdit").onclick = function () {
 						location.href = "/student/quiz/<%=q._id %>/edit";
@@ -41,12 +47,10 @@
 						location.href = "/student/quiz/<%= q._id %>/delete";
 					};
 				</script>
-			</div>
-
+				<% }) %>
 		</div>
-	<% }) %>
-	</div>
-	
-</div>
 
-<%- include("../partials/footer") %>
+	</div>
+
+
+	<%- include("../partials/footer") %>

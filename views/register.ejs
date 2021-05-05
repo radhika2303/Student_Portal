@@ -1,55 +1,49 @@
 <%- include("./partials/header.ejs") %>
-<div class="container d-flex justify-content-center align-items-center mt-2">
-	<div class="row">
-		<div class="col-md-6 offest-md-3 col-xl-4 offset-xl-4">
-			<h1 style="text-align:center;color: white;">
-				SignUp
-			</h1>
-			<div class="card shadow p-2" style="margin: 20px;">
-				<form action="/register" method="POST">
-					<div class="mb-3">
-						<label class="form-label" for="F_Name">First Name</label>
-						<input class="form-control" type="text" name="F_Name" placeholder="First Name">
-					</div>
-					<div class="mb-3">
-						<label class="form-label" for="M_Name">Middle Name</label>
-						<input class="form-control" type="text" name="M_Name" placeholder="Middle Name">
-					</div>
-					<div class="mb-3">
-						<label class="form-label" for="L_Name">Last Name</label>
-						<input class="form-control" type="text" name="L_Name" placeholder="Last Name">
-					</div>
-					<div class="mb-3">
-						<label class="form-label" for="MIS">MIS</label>
-						<input class="form-control" type="text" name="username" placeholder="MIS">
-					</div>
-					<div class="mb-3">
-						<label class="form-label" for="Year">Year</label>
-						<input class="form-control" type="text" name="Year" placeholder="Year">
-					</div>
-					<div class="mb-3">
-						<label class="form-label" for="Branch">Branch</label>
-						<input class="form-control" type="text" name="Branch" placeholder="Branch">
-					</div>
-					<div class="mb-3">
-						<label class="form-label" for="Street_Name">Street Name</label>
-						<input class="form-control" type="text" name="Street_Name" placeholder="Street Name">
-					</div>
-					<div class="mb-3">
-						<label class="form-label" for="Street_No">Street Number</label>
-						<input class="form-control" type="text" name="Street_No" placeholder="Street Number">
-					</div>
-					<div class="mb-3">
-						<label class="form-label" for="password">Password</label>
-						<input class="form-control" type="password" name="password" placeholder="Password">
-					</div>	
-					<br>
-					<div class="form-group">
-						<button class="btn btn-lg btn-success btn-block">SignUp!</button>
-					</div>
-				</form>
+	<div class="container d-flex justify-content-center align-items-center mt-2">
+		<div class="row">
+			<div class="col-md-3 col-xl-4"></div>
+			<div class="col-md-6 col-xl-4">
+				<h1 style="text-align:center;color: white;">
+					SignUp
+				</h1>
+				<div class="card shadow p-2" style="margin: 20px;">
+					<form action="/register" method="POST">
+						<div class="mb-3">
+							<label class="form-label" for="F_Name" style="margin-bottom: 0px;"><b>First Name</b></label>
+							<input class="form-control" type="text" name="F_Name" placeholder="First Name">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="M_Name" style="margin-bottom: 0px;"><b>Middle
+									Name</b></label>
+							<input class="form-control" type="text" name="M_Name" placeholder="Middle Name">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="L_Name" style="margin-bottom: 0px;"><b>Last Name</b></label>
+							<input class="form-control" type="text" name="L_Name" placeholder="Last Name">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="MIS" style="margin-bottom: 0px;"><b>MIS</b></label>
+							<input class="form-control" type="text" name="username" placeholder="MIS">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="Year" style="margin-bottom: 0px;"><b>Year</b></label>
+							<input class="form-control" type="text" name="Year" placeholder="Year">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="Branch" style="margin-bottom: 0px;"><b>Branch</b></label>
+							<input class="form-control" type="text" name="Branch" placeholder="Branch">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="password"><b>Password</b></label>
+							<input class="form-control" type="password" name="password" placeholder="Password">
+						</div>
+						<div class="form-group text-center">
+							<button class="btn btn-primary">SignUp!</button>
+						</div>
+					</form>
+				</div>
 			</div>
-		</div>	
+			<div class="col-md-3 col-xl-4"></div>
+		</div>
 	</div>
-</div>
-<%- include("./partials/footer.ejs") %>
+	<%- include("./partials/footer.ejs") %>

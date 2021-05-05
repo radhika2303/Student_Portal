@@ -1,33 +1,39 @@
 <%- include("../partials/header.ejs") %>
-<div class="container d-flex justify-content-center align-items-center mt-5">
-	<div class="row">
-		<div class="col-md-6 offest-md-3 col-xl-4 offset-xl-4">
-			<h1 style="text-align:center; color: white;">
-				Add New Quiz
-			</h1>
-			<div class="card shadow p-2">
-			<form action="/student/quiz/new" method="POST">
-				<div class="mb-3">
-					<label class="form-label" for="Q_Subject">Quiz Subject</label>
-					<input class="form-control" type="text" name="Q_Subject" placeholder="Subject for Quiz">
+	<div class="container d-flex justify-content-center align-items-center my-3">
+		<div class="row">
+			<div class="col-md-3 col-xl-4"></div>
+			<div class="col-md-6 col-xl-4">
+				<h1 style="text-align:center; color: white;">
+					Add New Quiz
+				</h1>
+				<div class="card shadow p-2">
+					<form action="/student/quiz/new" method="POST" class="px-4 py-3">
+						<div class="mb-3">
+							<label class="form-label" for="Q_Subject" style="margin-bottom: 0px;"><b>Quiz
+									Subject</b></label>
+							<input class="form-control" type="text" name="Q_Subject" placeholder="Subject for Quiz">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="Q_Time" style="margin-bottom: 0px;"><b>Quiz Time</b></label>
+							<input class="form-control" type="time" name="Q_Time" placeholder="Time of Quiz">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="Q_Date" style="margin-bottom: 0px;"><b>Date of
+									Quiz</b></label>
+							<input class="form-control" type="date" name="Q_Date" placeholder="Date of Quiz">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="Q_Duration" style="margin-bottom: 0px;"><b>Duration of
+									Quiz</b></label>
+							<input class="form-control" type="time" name="Q_Duration" placeholder="Duration of Quiz">
+						</div>
+						<div class="text-center"> <button class="btn btn-primary ">Submit!</button>
+						</div>
 				</div>
-				<div class="mb-3">
-					<label class="form-label" for="Q_Time">Quiz Time</label>
-					<input class="form-control" type="time" name="Q_Time" placeholder="Time of Quiz">
-                </div>	
-                <div class="mb-3">
-					<label class="form-label" for="Q_Date">Date of Quiz</label>
-					<input class="form-control" type="date" name="Q_Date" placeholder="Date of Quiz">
-				</div>	
-				<div class="mb-3">
-					<label class="form-label" for="Q_Duration">Duration of Quiz</label>
-					<input class="form-control" type="time" name="Q_Duration" placeholder="Duration of Quiz">
-				</div>
-					<button class="btn btn-lg btn-primary btn-block">Submit!</button>
-				</div>
-			</form>
-		</div>		
+				</form>
+			</div>
+			<div class="col-md-3 col-xl-4"></div>
+		</div>
 	</div>
-</div>
-</div>
-<%- include("../partials/footer.ejs") %>
+
+	<%- include("../partials/footer.ejs") %>

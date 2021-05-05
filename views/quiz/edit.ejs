@@ -1,33 +1,38 @@
 <%- include("../partials/header.ejs") %>
-<div class="container d-flex justify-content-center align-items-center mt-5">
-	<div class="row">
-		<div class="col-md-6 offest-md-3 col-xl-4 offset-xl-4">
-			<h1 style="text-align:center; color: white;">
-				Edit Quiz
-			</h1>
-			<div class="card shadow p-2">
-			<form action="/student/quiz/<%= quiz._id %>?_method=PUT" method="POST">
-				<div class="mb-3">
-					<label class="form-label" for="Q_Subject">Quiz Subject</label>
-					<input class="form-control" type="text" name="Q_Subject" value="<%= quiz.Q_Subject %>">
+	<div class="container d-flex justify-content-center align-items-center mt-3">
+		<div class="row">
+			<div class="col-md-3 col-xl-4"></div>
+			<div class="col-md-6 col-xl-4">
+				<h1 style="text-align:center; color: white;">
+					Edit Quiz
+				</h1>
+				<div class="card shadow p-2">
+					<form action="/student/quiz/<%= quiz._id %>?_method=PUT" method="POST">
+						<div class="mb-3">
+							<label class="form-label" for="Q_Subject"><b>Quiz Subject</b></label>
+							<input class="form-control" type="text" name="Q_Subject" value="<%= quiz.Q_Subject %>">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="Q_Time"><b>Quiz Time</b></label>
+							<input class="form-control" type="time" name="Q_Time" value="<%= quiz.Q_Time %>">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="Q_Duration"><b>Duration of Quiz</b></label>
+							<input class="form-control" type="time" name="Q_Duration" value="<%= quiz.Q_Duration %>">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="Q_Date"><b>Date of Quiz</b></label>
+							<input class="form-control" type="date" name="Q_Date"
+								value="<%= quiz.Q_Date.getDate()%>/<%= quiz.Q_Date.getMonth()%>/<%= quiz.Q_Date.getFullYear()%>">
+						</div>
+						<div class="text-center">
+							<button class="btn btn-primary">Submit!</button>
+						</div>
 				</div>
-				<div class="mb-3">
-					<label class="form-label" for="Q_Time">Quiz Time</label>
-					<input class="form-control" type="time" name="Q_Time" value="<%= quiz.Q_Time %>">
-                </div>	
-				<div class="mb-3">
-					<label class="form-label" for="Q_Duration">Duration of Quiz</label>
-					<input class="form-control" type="time" name="Q_Duration" value="<%= quiz.Q_Duration %>">
-				</div>
-				<div class="mb-3">
-					<label class="form-label" for="Q_Date">Date of Quiz</label>
-					<input class="form-control" type="date" name="Q_Date" value="<%= quiz.Q_Date %>">
-				</div>
-					<button class="btn btn-lg btn-primary btn-block">Submit!</button>
-				</div>
-			</form>
-		</div>		
+				</form>
+			</div>
+			<div class="col-md-3 col-xl-4"></div>
+		</div>
 	</div>
-</div>
-</div>
-<%- include("../partials/footer.ejs") %>
+	<br />
+	<%- include("../partials/footer.ejs") %>

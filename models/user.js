@@ -8,8 +8,6 @@ var UserSchema = new mongoose.Schema({
     L_Name: String,
     Year: String,
     Branch: String,
-    Street_Name: String,
-    Street_No: String,
     ideas:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Idea",
