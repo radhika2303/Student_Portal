@@ -31,29 +31,6 @@ Router.post("/new", (req,res) => {
             req.user.save();
         }
     })
-
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'muskanparyani007@gmail.com',
-          pass: 'deepakbaba'
-        }
-      });
-      
-      var mailOptions = {
-        from: 'muskanparyani007@gmail.com',
-        to: 'muskanparyani007@gmail.com',
-        subject: 'Book Information Published',
-        text: 'Your information about Books was recorded on Student Portal'
-      };
-
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
     res.redirect("/student/book/all")
 })
 

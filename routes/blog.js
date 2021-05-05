@@ -17,20 +17,6 @@ Router.post("/new", (req,res) => {
     var Content = req.body.Content;
     var B_Date = req.body.B_Date;
     var newBlog = {Topic: Topic,Content:Content,B_Date:B_Date};
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'muskanparyani007@gmail.com',
-          pass: 'deepakbaba'
-        }
-      });
-      
-      var mailOptions = {
-        from: 'muskanparyani007@gmail.com',
-        to: 'muskanparyani007@gmail.com',
-        subject: 'Blog Published',
-        text: 'Your Blog was Published on Student Portal'
-      };
       
     Blog.create(newBlog, function(err,newBlog) {
         if(err) {
@@ -42,13 +28,6 @@ Router.post("/new", (req,res) => {
             req.user.save();
         }
     })
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
     res.redirect("/student/blog/all")
 })
 
